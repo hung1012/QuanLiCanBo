@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/textHoTen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Họ Tên"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/textDViCongTac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Đơn Vị Công Tác"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textHoTen"
+        app:layout_constraintStart_toStartOf="@+id/textHoTen"
+        app:layout_constraintTop_toBottomOf="@+id/textHoTen" />
+
+    <EditText
+        android:id="@+id/textHSoLuong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hệ Số Lương"
+        android:inputType="number"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textDViCongTac"
+        app:layout_constraintStart_toStartOf="@+id/textDViCongTac"
+        app:layout_constraintTop_toBottomOf="@+id/textDViCongTac" />
+
+    <EditText
+        android:id="@+id/textPhCap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phụ Cấp"
+        android:inputType="number"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textHSoLuong"
+        app:layout_constraintStart_toStartOf="@+id/textHSoLuong"
+        app:layout_constraintTop_toBottomOf="@+id/textHSoLuong" />
+
+
+    <EditText
+        android:id="@+id/textSo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Số Tiết Dạy"
+        android:inputType="number"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPhCap" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

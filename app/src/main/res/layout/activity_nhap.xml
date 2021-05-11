@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/textTen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginVertical="50dp"
+        android:hint="Tên"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.239"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/textDonViCongTac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Đơn Vị Công Tác"
+        android:layout_marginHorizontal="50dp"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTen"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/textHeSoLuong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hệ Số Lương"
+        android:layout_marginHorizontal="50dp"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDonViCongTac"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/textPhuCap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phụ Cấp"
+        android:layout_marginHorizontal="50dp"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textHeSoLuong"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/textSo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:hint="Số Tiết Dạy"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/textPhuCap"
+        app:layout_constraintStart_toStartOf="@+id/textPhuCap"
+        app:layout_constraintTop_toBottomOf="@+id/textPhuCap"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:text="Nhập"
+        app:layout_constraintEnd_toEndOf="@+id/textSo"
+        app:layout_constraintStart_toStartOf="@+id/textSo"
+        app:layout_constraintTop_toBottomOf="@+id/textSo" />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:text="Danh Sách Cán Bộ"
+        app:layout_constraintEnd_toEndOf="@+id/textSo"
+        app:layout_constraintStart_toStartOf="@+id/textSo"
+        app:layout_constraintTop_toBottomOf="@+id/textSo" />
+
+    <TextView
+        android:id="@+id/tv_canbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cán Bộ 1"
+        android:gravity="left"
+        android:layout_marginTop="10dp"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_canBo"
+        android:layout_width="103dp"
+        android:layout_height="106dp"
+        app:layout_constraintBottom_toTopOf="@+id/textTen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_canbo">
+
+        <RadioButton
+            android:id="@+id/radioButton_giangVien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giảng Viên" />
+
+        <RadioButton
+            android:id="@+id/radioButton_nhanVien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nhân Viên" />
+    </RadioGroup>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

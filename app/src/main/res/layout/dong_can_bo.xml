@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pastedpurple">
+
+    <TextView
+        android:id="@+id/textHoTen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:text="Ho Ten"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textDViCongTac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:text="Don Vi"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textHoTen"
+        app:layout_constraintStart_toStartOf="@+id/textHoTen"
+        app:layout_constraintTop_toBottomOf="@+id/textHoTen" />
+
+    <TextView
+        android:id="@+id/textHSoLuong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:text="He So"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textDViCongTac"
+        app:layout_constraintStart_toStartOf="@+id/textDViCongTac"
+        app:layout_constraintTop_toBottomOf="@+id/textDViCongTac" />
+
+    <TextView
+        android:id="@+id/textPhCap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:text="Phu Cap"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textHSoLuong"
+        app:layout_constraintStart_toStartOf="@+id/textHSoLuong"
+        app:layout_constraintTop_toBottomOf="@+id/textHSoLuong" />
+
+
+    <TextView
+        android:id="@+id/textSo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:text="So"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPhCap" />
+
+
+    <TextView
+        android:id="@+id/textSTT"
+        android:layout_width="41dp"
+        android:layout_height="96dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textSo"
+        app:layout_constraintEnd_toStartOf="@+id/textHSoLuong"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <TextView
+        android:id="@+id/textLuong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Luong:"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textSo"
+        app:layout_constraintTop_toBottomOf="@+id/textPhCap" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

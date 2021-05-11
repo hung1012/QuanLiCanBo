@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">QuanLyCanBo</string>
+    <string name="title_activity_can_bo_list1">CanBoList1</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_list_c_b">ListCB</string>
+</resources>
