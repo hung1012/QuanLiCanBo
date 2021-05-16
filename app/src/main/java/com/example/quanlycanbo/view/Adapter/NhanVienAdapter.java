@@ -10,14 +10,12 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.example.quanlycanbo.R;
-import com.example.quanlycanbo.model.GiangVien;
 import com.example.quanlycanbo.model.NhanVien;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NhanVienAdapter extends BaseAdapter implements Filterable {
-
     Context context;
     int layout;
     List<NhanVien> arrNhanVien = new ArrayList<>();
@@ -64,11 +62,12 @@ public class NhanVienAdapter extends BaseAdapter implements Filterable {
         textPhCap.setText("Phụ Cấp: " + arrNhanVien.get(position).getPhuCap());
         textSoTietDay.setText("Số Ngày Công: " +arrNhanVien.get(position).getSoNgayCong());
         textSTT.setText(Integer.toString(position+1));
-        textLuong.setText("Lương: " +Long.toString(arrNhanVien.get(position).tinhLuong())+"đ");
+        textLuong.setText("Lương: " +Double.toString(arrNhanVien.get(position).tinhLuong())+"đ");
 
 
         return convertView;
     }
+
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -82,7 +81,7 @@ public class NhanVienAdapter extends BaseAdapter implements Filterable {
                     for(NhanVien nhanVien : arrNhanVienOld){
                         if(nhanVien.getHoTen().toLowerCase().contains(strSearch.toLowerCase())
                                 || nhanVien.getDonViCongTac().toLowerCase().contains(strSearch.toLowerCase())
-                                ||Integer.toString(nhanVien.getHeSoLuong()).contains(strSearch.toLowerCase())){
+                                ||Double.toString(nhanVien.getHeSoLuong()).contains(strSearch.toLowerCase())){
                             list.add(nhanVien);
                         }
                     }

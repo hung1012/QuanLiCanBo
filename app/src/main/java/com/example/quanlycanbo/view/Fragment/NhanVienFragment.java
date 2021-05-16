@@ -15,7 +15,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.example.quanlycanbo.R;
-import com.example.quanlycanbo.model.GiangVien;
 import com.example.quanlycanbo.model.NhanVien;
 import com.example.quanlycanbo.view.Activity.ActivityNhap;
 import com.example.quanlycanbo.view.Dialog.DialogThem;
@@ -64,7 +63,7 @@ public class NhanVienFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 themNhanVien = true;
-                GiangVienFragment.themGiangVien = false;
+                GiaoVienFragment.themGiaoVien = false;
                 openDialog();
             }
         });
@@ -86,7 +85,7 @@ public class NhanVienFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 vitri = position;
                 laNhanVien = true;
-                GiangVienFragment.laGiangVien = false;
+                GiaoVienFragment.laGiaoVien = false;
                 openDialogSuaCanBo();
                 adapter.notifyDataSetChanged();
             }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red"
+    android:background="@drawable/ic_main_background"
     android:padding="16dp">
 
     <EditText
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Hệ Số Lương"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textDViCongTac"
         app:layout_constraintStart_toStartOf="@+id/textDViCongTac"
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Phụ Cấp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textHSoLuong"
         app:layout_constraintStart_toStartOf="@+id/textHSoLuong"

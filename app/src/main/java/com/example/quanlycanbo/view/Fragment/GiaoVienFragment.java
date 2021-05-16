@@ -16,26 +16,26 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.example.quanlycanbo.R;
-import com.example.quanlycanbo.model.GiangVien;
-import com.example.quanlycanbo.view.Adapter.GiangVienAdapter;
+import com.example.quanlycanbo.model.GiaoVien;
+import com.example.quanlycanbo.view.Adapter.GiaoVienAdapter;
 import com.example.quanlycanbo.view.Activity.ActivityNhap;
 import com.example.quanlycanbo.view.Dialog.DialogThem;
 import com.example.quanlycanbo.view.Dialog.DialogSua;
 
 import java.util.ArrayList;
 
-public class GiangVienFragment extends Fragment {
-    private ArrayList<GiangVien> arrGiangVien, arrGiangVien1 = new ArrayList<>();
-    private ListView lvGiangVien;
+public class GiaoVienFragment extends Fragment {
+    private ArrayList<GiaoVien> arrGiaoVien, arrGiaoVien1 = new ArrayList<>();
+    private ListView lvGiaoVien;
     private SearchView searchGV;
     private Button btnThem;
     private Switch switchchuyen;
 
     public static int vitri;
-    public static boolean laGiangVien;
-    public static boolean themGiangVien;
+    public static boolean laGiaoVien;
+    public static boolean themGiaoVien;
 
-    public GiangVienFragment() {
+    public GiaoVienFragment() {
         // Required empty public constructor
     }
 
@@ -45,46 +45,45 @@ public class GiangVienFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment, container, false);
 
         //ÁNH XẠ
-        lvGiangVien = view.findViewById(R.id.listView);
+        lvGiaoVien = view.findViewById(R.id.listView);
         searchGV = view.findViewById(R.id.searchView);
         btnThem = view.findViewById(R.id.buttonThêm);
         switchchuyen = view.findViewById(R.id.switch1);
 
-        //NHẬN arrGiangViên TỪ CreateLayout
-        arrGiangVien = getActivity().getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_GIANG_VIEN);
-
-        //ĐỔ arrGiangVien vào adapter
-        GiangVienAdapter adapter = new GiangVienAdapter(getContext(), R.layout.dong_can_bo, arrGiangVien);
-        lvGiangVien.setAdapter(adapter);
+        //NHẬN arrGiaoViên TỪ CreateLayout
+        arrGiaoVien = getActivity().getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_GIAO_VIEN);
+        //ĐỔ arrGiaoVien vào adapter
+        GiaoVienAdapter adapter = new GiaoVienAdapter(getContext(), R.layout.dong_can_bo, arrGiaoVien);
+        lvGiaoVien.setAdapter(adapter);
 
         //THÊM
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                themGiangVien = true;
+                themGiaoVien = true;
                 NhanVienFragment.themNhanVien = false;
                 openDialog();
             }
         });
 
         //XÓA
-        lvGiangVien.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        lvGiaoVien.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "Đã Xóa Giảng Viên Thứ " + (position + 1), Toast.LENGTH_SHORT).show();
-                arrGiangVien.remove(position);
+                Toast.makeText(getActivity(), "Đã Xóa Giáo Viên Thứ " + (position + 1), Toast.LENGTH_SHORT).show();
+                arrGiaoVien.remove(position);
                 adapter.notifyDataSetChanged();
-                lvGiangVien.setAdapter(adapter);
+                lvGiaoVien.setAdapter(adapter);
                 return true;
             }
         });
 
         //SỬA
-        lvGiangVien.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvGiaoVien.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 vitri = position;
-                laGiangVien = true;
+                laGiaoVien = true;
                 NhanVienFragment.laNhanVien = false;
                 openDialogSuaCanBo();
             }
@@ -110,24 +109,24 @@ public class GiangVienFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    arrGiangVien1.clear();
-                    arrGiangVien1.addAll(arrGiangVien);
-                    ArrayList<GiangVien> arrGiangVien10 = new ArrayList<>();
-                    for(GiangVien giangVien : arrGiangVien){
-                        if(giangVien.tinhLuong()>10000000){
-                            arrGiangVien10.add(giangVien);
+                    arrGiaoVien1.clear();
+                    arrGiaoVien1.addAll(arrGiaoVien);
+                    ArrayList<GiaoVien> arrGiaoVien10 = new ArrayList<>();
+                    for(GiaoVien giaoVien : arrGiaoVien){
+                        if(giaoVien.tinhLuong()>10000000){
+                            arrGiaoVien10.add(giaoVien);
                         }
                     }
-                    arrGiangVien.clear();
-                    arrGiangVien.addAll(arrGiangVien10);
+                    arrGiaoVien.clear();
+                    arrGiaoVien.addAll(arrGiaoVien10);
                     adapter.notifyDataSetChanged();
-                    lvGiangVien.setAdapter(adapter);
+                    lvGiaoVien.setAdapter(adapter);
                 }
                 else{
-                    arrGiangVien.clear();
-                    arrGiangVien.addAll(arrGiangVien1);
+                    arrGiaoVien.clear();
+                    arrGiaoVien.addAll(arrGiaoVien1);
                     adapter.notifyDataSetChanged();
-                    lvGiangVien.setAdapter(adapter);
+                    lvGiaoVien.setAdapter(adapter);
                 }
             }
         });
@@ -142,6 +141,5 @@ public class GiangVienFragment extends Fragment {
         DialogSua dialog = new DialogSua();
         dialog.show(getFragmentManager(), "Dialogthem");
     }
-
 }
 

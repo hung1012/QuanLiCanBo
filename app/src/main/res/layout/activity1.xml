@@ -5,28 +5,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Activity.Activity1">
+    tools:context=".view.Activity.Activity1"
+    android:background="@drawable/ic_main_background">
 
-    <EditText
-        android:id="@+id/edt_nhap"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:gravity="center"
-        android:layout_margin="40dp"
-        android:hint="Nhập số cán bộ"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <EditText-->
+<!--        android:id="@+id/edt_nhap"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:inputType="number"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_margin="40dp"-->
+<!--        android:hint="Nhập số cán bộ"-->
+<!--        android:textSize="30dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <Button
         android:id="@+id/btn_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OK"
-        app:layout_constraintEnd_toEndOf="@+id/edt_nhap"
-        app:layout_constraintStart_toStartOf="@+id/edt_nhap"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nhap" />
+        app:layout_constraintEnd_toEndOf="@+id/l_nhap"
+        app:layout_constraintStart_toStartOf="@+id/l_nhap"
+        app:layout_constraintTop_toBottomOf="@+id/l_nhap" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/l_nhap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tNhap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="40dp"
+            android:gravity="center"
+            android:hint="Nhập số cán bộ"
+            android:inputType="number"
+            android:textSize="30dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

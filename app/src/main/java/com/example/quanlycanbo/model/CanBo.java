@@ -3,19 +3,17 @@ package com.example.quanlycanbo.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
 public class CanBo implements Parcelable {
     private String hoTen;
     private String donViCongTac;
-    private int heSoLuong;
-    private int phuCap;
-    private CanBo canBo;
+    private double heSoLuong;
+    private double phuCap;
+    public CanBo canBo;
 
     public CanBo() {
-        super();
     }
 
-    public CanBo(String hoTen, String donViCongTac, int heSoLuong, int phuCap) {
+    public CanBo(String hoTen, String donViCongTac, double heSoLuong, double phuCap) {
         this.hoTen = hoTen;
         this.donViCongTac = donViCongTac;
         this.heSoLuong = heSoLuong;
@@ -25,8 +23,8 @@ public class CanBo implements Parcelable {
     protected CanBo(Parcel in) {
         hoTen = in.readString();
         donViCongTac = in.readString();
-        heSoLuong = in.readInt();
-        phuCap = in.readInt();
+        heSoLuong = in.readDouble();
+        phuCap = in.readDouble();
         canBo = in.readParcelable(CanBo.class.getClassLoader());
     }
 
@@ -34,8 +32,8 @@ public class CanBo implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(hoTen);
         dest.writeString(donViCongTac);
-        dest.writeInt(heSoLuong);
-        dest.writeInt(phuCap);
+        dest.writeDouble(heSoLuong);
+        dest.writeDouble(phuCap);
         dest.writeParcelable(canBo, flags);
     }
 
@@ -72,23 +70,23 @@ public class CanBo implements Parcelable {
         this.donViCongTac = donViCongTac;
     }
 
-    public int getHeSoLuong() {
+    public double getHeSoLuong() {
         return heSoLuong;
     }
 
-    public void setHeSoLuong(int heSoLuong) {
+    public void setHeSoLuong(double heSoLuong) {
         this.heSoLuong = heSoLuong;
     }
 
-    public int getPhuCap() {
+    public double getPhuCap() {
         return phuCap;
     }
 
-    public void setPhuCap(int phuCap) {
+    public void setPhuCap(double phuCap) {
         this.phuCap = phuCap;
     }
 
-    public long tinhLuong() {
+    public double tinhLuong() {
         return 0;
     }
 

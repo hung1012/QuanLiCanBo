@@ -13,10 +13,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.quanlycanbo.R;
-import com.example.quanlycanbo.model.GiangVien;
+import com.example.quanlycanbo.model.GiaoVien;
 import com.example.quanlycanbo.model.NhanVien;
 import com.example.quanlycanbo.view.Activity.ActivityNhap;
-import com.example.quanlycanbo.view.Fragment.GiangVienFragment;
+import com.example.quanlycanbo.view.Fragment.GiaoVienFragment;
 import com.example.quanlycanbo.view.Fragment.NhanVienFragment;
 
 import java.util.ArrayList;
@@ -27,10 +27,10 @@ public class DialogSua extends AppCompatDialogFragment {
     private EditText Heso;
     private EditText Phucap;
     private EditText So;
-    private ArrayList<GiangVien> arrGiangVien;
+    private ArrayList<GiaoVien> arrGiaoVien;
     private ArrayList<NhanVien> arrNhanVien;
     int vitriNhan;
-    boolean laGiangVien = GiangVienFragment.laGiangVien;
+    boolean laGiangVien = GiaoVienFragment.laGiaoVien;
 
     @NonNull
     @Override
@@ -40,7 +40,7 @@ public class DialogSua extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.dialog, null);
 
         //NHẬN 2 arr
-        arrGiangVien = getActivity().getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_GIANG_VIEN);
+        arrGiaoVien = getActivity().getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_GIAO_VIEN);
         arrNhanVien = getActivity().getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_NHAN_VIEN);
 
         //ÁNH XẠ
@@ -50,48 +50,49 @@ public class DialogSua extends AppCompatDialogFragment {
         Phucap = view.findViewById(R.id.textPhCap);
         So = view.findViewById(R.id.textSo);
 
-        //ĐỂ TEXT VÀO NHƯNG ĐHS K ĐC
+        //ĐỂ TEXT VÀO EDITTEXT
         if(laGiangVien) {
-            vitriNhan = GiangVienFragment.vitri;
-            Hoten.setText(arrGiangVien.get(vitriNhan).getHoTen());
-            Donvi.setText(arrGiangVien.get(vitriNhan).getDonViCongTac());
-            Heso.setText(Integer.toString(arrGiangVien.get(vitriNhan).getHeSoLuong()));
-            Phucap.setText(Integer.toString(arrGiangVien.get(vitriNhan).getPhuCap()));
-            So.setText(Integer.toString(arrGiangVien.get(vitriNhan).getSoTietDay()));
+            vitriNhan = GiaoVienFragment.vitri;
+            Hoten.setText(arrGiaoVien.get(vitriNhan).getHoTen());
+            Donvi.setText(arrGiaoVien.get(vitriNhan).getDonViCongTac());
+            Heso.setText(Double.toString(arrGiaoVien.get(vitriNhan).getHeSoLuong()));
+            Phucap.setText(Double.toString(arrGiaoVien.get(vitriNhan).getPhuCap()));
+            So.setText(Integer.toString(arrGiaoVien.get(vitriNhan).getSoTietDay()));
         }
         else{
             vitriNhan = NhanVienFragment.vitri;
             Hoten.setText(arrNhanVien.get(vitriNhan).getHoTen());
             Donvi.setText(arrNhanVien.get(vitriNhan).getDonViCongTac());
-            Heso.setText(Integer.toString(arrNhanVien.get(vitriNhan).getHeSoLuong()));
-            Phucap.setText(Integer.toString(arrNhanVien.get(vitriNhan).getPhuCap()));
+            Heso.setText(Double.toString(arrNhanVien.get(vitriNhan).getHeSoLuong()));
+            Phucap.setText(Double.toString(arrNhanVien.get(vitriNhan).getPhuCap()));
             So.setText(Integer.toString(arrNhanVien.get(vitriNhan).getSoNgayCong()));
+            So.setHint("Số Ngày Công");
         }
 
         builder.setView(view)
-                 .setTitle("SỬA")
+                 .setTitle("SỬA")/*TẠO 1 NÚT LÙI*/
                  .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                      @Override
                      public void onClick(DialogInterface dialog, int which) {
                      }
-                 })
+                 })/*TẠO 1 NÚT TIẾP TỤC*/
                  .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                      @Override
                      public void onClick(DialogInterface dialog, int which) {
                          if(laGiangVien) {
-                             vitriNhan = GiangVienFragment.vitri;
-                             arrGiangVien.set(vitriNhan, new GiangVien(Hoten.getText().toString(),
+                             vitriNhan = GiaoVienFragment.vitri;
+                             arrGiaoVien.set(vitriNhan, new GiaoVien(Hoten.getText().toString(),
                                                                        Donvi.getText().toString(),
-                                                                       Integer.parseInt(Heso.getText().toString()),
-                                                                       Integer.parseInt(Phucap.getText().toString()),
+                                                                       Double.parseDouble(Heso.getText().toString()),
+                                                                       Double.parseDouble(Phucap.getText().toString()),
                                                                        Integer.parseInt(So.getText().toString())));
                             }
                          else{
                              vitriNhan = NhanVienFragment.vitri;
                              arrNhanVien.set(vitriNhan, new NhanVien(Hoten.getText().toString(),
                                                                      Donvi.getText().toString(),
-                                                                     Integer.parseInt(Heso.getText().toString()),
-                                                                     Integer.parseInt(Phucap.getText().toString()),
+                                                                     Double.parseDouble(Heso.getText().toString()),
+                                                                     Double.parseDouble(Phucap.getText().toString()),
                                                                      Integer.parseInt(So.getText().toString())));
                             }
                          Toast.makeText(getActivity(), "Đã Sửa Cán Bộ "+ (vitriNhan+1), Toast.LENGTH_SHORT).show();

@@ -10,27 +10,27 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.example.quanlycanbo.R;
-import com.example.quanlycanbo.model.GiangVien;
+import com.example.quanlycanbo.model.GiaoVien;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GiangVienAdapter extends BaseAdapter implements Filterable {
+public class GiaoVienAdapter extends BaseAdapter implements Filterable {
     Context context;
     int layout;
-    List<GiangVien> arrGiangVien = new ArrayList<>();
+    List<GiaoVien> arrGiaoVien = new ArrayList<>();
     //Tạo List khác phục vụ việc tìm kiếm
-    List<GiangVien> arrGiangVienOld = new ArrayList<>();
-    public GiangVienAdapter(Context context, int layout, List<GiangVien> arrGiangVien){
+    List<GiaoVien> arrGiaoVienOld = new ArrayList<>();
+    public GiaoVienAdapter(Context context, int layout, List<GiaoVien> arrGiaoVien){
         this.context = context;
         this.layout = layout;
-        this.arrGiangVien = arrGiangVien;
-        this.arrGiangVienOld = arrGiangVien;
+        this.arrGiaoVien = arrGiaoVien;
+        this.arrGiaoVienOld = arrGiaoVien;
     }
 
     @Override
     public int getCount() {
-        return arrGiangVien == null ? 0 : arrGiangVien.size();
+        return arrGiaoVien == null ? 0 : arrGiaoVien.size();
     }
 
     @Override
@@ -56,16 +56,18 @@ public class GiangVienAdapter extends BaseAdapter implements Filterable {
         TextView textSTT = convertView.findViewById(R.id.textSTT);
         TextView textLuong = convertView.findViewById(R.id.textLuong);
 
-        textHoTen.setText("Họ Tên: " +arrGiangVien.get(position).getHoTen());
-        textDViCongTac.setText("Đơn Vị Công Tác: "+arrGiangVien.get(position).getDonViCongTac());
-        textHSoLuong.setText("Hệ Số Lương: "+ arrGiangVien.get(position).getHeSoLuong());
-        textPhCap.setText("Phụ Cấp: "+arrGiangVien.get(position).getPhuCap());
-        textSoTietDay.setText("Số Tiết Dạy: "+arrGiangVien.get(position).getSoTietDay());
+        textHoTen.setText("Họ Tên: " + arrGiaoVien.get(position).getHoTen());
+        textDViCongTac.setText("Đơn Vị Công Tác: "+ arrGiaoVien.get(position).getDonViCongTac());
+        textHSoLuong.setText("Hệ Số Lương: "+ arrGiaoVien.get(position).getHeSoLuong());
+        textPhCap.setText("Phụ Cấp: "+ arrGiaoVien.get(position).getPhuCap());
+        textSoTietDay.setText("Số Tiết Dạy: "+ arrGiaoVien.get(position).getSoTietDay());
         textSTT.setText(Integer.toString(position+1));
-        textLuong.setText("Lương: " +Long.toString(arrGiangVien.get(position).tinhLuong())+"đ");
+        textLuong.setText("Lương: " +Double.toString(arrGiaoVien.get(position).tinhLuong())+"đ");
 
         return convertView;
     }
+
+    //TÌM KIẾM
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -73,26 +75,26 @@ public class GiangVienAdapter extends BaseAdapter implements Filterable {
             protected FilterResults performFiltering(CharSequence constraint) {
                 String strSearch = constraint.toString();
                 if(strSearch.isEmpty()){
-                    arrGiangVien = arrGiangVienOld;
+                    arrGiaoVien = arrGiaoVienOld;
                 } else{
-                    List<GiangVien> list = new ArrayList<>();
-                    for(GiangVien giangVien : arrGiangVienOld){
-                        if(giangVien.getHoTen().toLowerCase().contains(strSearch.toLowerCase())
-                         || giangVien.getDonViCongTac().toLowerCase().contains(strSearch.toLowerCase())
-                         ||Integer.toString(giangVien.getHeSoLuong()).contains(strSearch.toLowerCase())){
-                            list.add(giangVien);
+                    List<GiaoVien> list = new ArrayList<>();
+                    for(GiaoVien giaoVien : arrGiaoVienOld){
+                        if(giaoVien.getHoTen().toLowerCase().contains(strSearch.toLowerCase())
+                         || giaoVien.getDonViCongTac().toLowerCase().contains(strSearch.toLowerCase())
+                         ||Double.toString(giaoVien.getHeSoLuong()).contains(strSearch.toLowerCase())){
+                            list.add(giaoVien);
                         }
                     }
-                    arrGiangVien = list;
+                    arrGiaoVien = list;
                 }
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = arrGiangVien;
+                filterResults.values = arrGiaoVien;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                arrGiangVien = (List<GiangVien>) results.values;
+                arrGiaoVien = (List<GiaoVien>) results.values;
                 notifyDataSetChanged();
             }
         };

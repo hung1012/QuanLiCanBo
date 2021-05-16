@@ -10,9 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.quanlycanbo.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class Activity1 extends AppCompatActivity implements View.OnClickListener {
-    private EditText edtNhap;
+    private TextInputEditText tNhap;
     private Button btnOK;
     public static final String SO_CAN_BO = "SOCANBO";
 
@@ -21,7 +23,10 @@ public class Activity1 extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity1);
 
-        edtNhap = findViewById(R.id.edt_nhap);
+        getSupportActionBar().hide();
+
+        //anhs xaj
+        tNhap = findViewById(R.id.tNhap);
         btnOK = findViewById(R.id.btn_ok);
 
         btnOK.setOnClickListener(this);
@@ -33,18 +38,18 @@ public class Activity1 extends AppCompatActivity implements View.OnClickListener
     }
 
     private void doLogin(){
-        if(edtNhap.getText().toString().trim().isEmpty()){
+        if(tNhap.getText().toString().trim().isEmpty()){
             Toast.makeText(this, "Hãy Nhập Số Cán Bộ!", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(Integer.parseInt(edtNhap.getText().toString() ) == 0){
+        if(Integer.parseInt(tNhap.getText().toString() ) == 0){
             Toast.makeText(this, "Số Cán Bộ Phải Lớn Hơn 0!", Toast.LENGTH_SHORT).show();
             return;
         }
         else{
             Intent intent = new Intent();
             intent.setClass(this, ActivityNhap.class);
-            intent.putExtra(SO_CAN_BO, Integer.parseInt(edtNhap.getText().toString()));
+            intent.putExtra(SO_CAN_BO, Integer.parseInt(tNhap.getText().toString()));
             startActivity(intent);
         }
     }

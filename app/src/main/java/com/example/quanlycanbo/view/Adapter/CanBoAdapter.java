@@ -5,18 +5,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.quanlycanbo.view.Fragment.GiangVienFragment;
+import com.example.quanlycanbo.view.Fragment.GiaoVienFragment;
 import com.example.quanlycanbo.view.Fragment.NhanVienFragment;
 
 public class CanBoAdapter extends FragmentStatePagerAdapter {//CHUYỂN ĐỔI GIỮA 2 FRAGMENT
                                                             //CHỨC NĂNG KHÁC VỚI 2 ADAPTER CÒN LẠI
-
-    private String listTab[] = {"Giảng Viên", "Nhân Viên"};
-    private GiangVienFragment giangVienFragment;
+    private String listTab[] = {"Giáo Viên", "Nhân Viên"};
+    private GiaoVienFragment giaoVienFragment;
     private NhanVienFragment nhanVienFragment;
     public CanBoAdapter(FragmentManager fm) {
         super(fm);
-        giangVienFragment = new GiangVienFragment();
+        giaoVienFragment = new GiaoVienFragment();
         nhanVienFragment = new NhanVienFragment();
     }
 
@@ -25,7 +24,7 @@ public class CanBoAdapter extends FragmentStatePagerAdapter {//CHUYỂN ĐỔI G
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return giangVienFragment;
+                return giaoVienFragment;
             case 1:
                 return nhanVienFragment;
             default:

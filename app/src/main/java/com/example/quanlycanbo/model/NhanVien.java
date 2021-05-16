@@ -13,7 +13,7 @@ public class NhanVien extends CanBo implements Parcelable {
         super();
     }
 
-    public NhanVien(String hoTen, String donViCongTac, int heSoLuong, int phuCap, int soNgayCong) {
+    public NhanVien(String hoTen, String donViCongTac, double heSoLuong, double phuCap, int soNgayCong) {
         super(hoTen, donViCongTac, heSoLuong, phuCap);
         this.soNgayCong = soNgayCong;
     }
@@ -27,14 +27,14 @@ public class NhanVien extends CanBo implements Parcelable {
     }
 
     @Override
-    public long tinhLuong() { return (long) (getHeSoLuong() * 750000 + getPhuCap() + soNgayCong * 200000); }
+    public double tinhLuong() { return (getHeSoLuong() * 750000 + getPhuCap() + soNgayCong * 200000); }
 
 
     protected NhanVien(Parcel in) {
         setHoTen(in.readString());
         setDonViCongTac(in.readString());
-        setHeSoLuong(in.readInt());
-        setPhuCap(in.readInt());
+        setHeSoLuong(in.readDouble());
+        setPhuCap(in.readDouble());
         soNgayCong = in.readInt();
         nhanVien = in.readParcelable(NhanVien.class.getClassLoader());
     }
@@ -43,8 +43,8 @@ public class NhanVien extends CanBo implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(getHoTen());
         dest.writeString(getDonViCongTac());
-        dest.writeInt(getHeSoLuong());
-        dest.writeInt(getPhuCap());
+        dest.writeDouble(getHeSoLuong());
+        dest.writeDouble(getPhuCap());
         dest.writeInt(soNgayCong);
         dest.writeParcelable(nhanVien, flags);
     }
