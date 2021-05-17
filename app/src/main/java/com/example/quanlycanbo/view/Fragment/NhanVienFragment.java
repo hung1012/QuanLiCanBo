@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.quanlycanbo.R;
 import com.example.quanlycanbo.model.NhanVien;
-import com.example.quanlycanbo.view.Activity.ActivityNhap;
+import com.example.quanlycanbo.view.Activity.Activity2;
 import com.example.quanlycanbo.view.Dialog.DialogThem;
 import com.example.quanlycanbo.view.Dialog.DialogSua;
 import com.example.quanlycanbo.view.Adapter.NhanVienAdapter;
@@ -52,7 +52,7 @@ public class NhanVienFragment extends Fragment {
         searchNV.setQueryHint("Tìm Kiếm Nhân Viên");
 
         //NHẬN arrNhanVien TỪ CreateLayout
-        arrNhanVien = getActivity().getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_NHAN_VIEN);
+        arrNhanVien = getActivity().getIntent().getParcelableArrayListExtra(Activity2.LIST_NHAN_VIEN);
 
         //ĐỔ arrNhanVien VÀO adapter
         NhanVienAdapter adapter = new NhanVienAdapter(getContext(), R.layout.dong_can_bo, arrNhanVien);

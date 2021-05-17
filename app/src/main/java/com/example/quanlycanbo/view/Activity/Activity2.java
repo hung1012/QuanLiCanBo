@@ -18,7 +18,7 @@ import com.example.quanlycanbo.model.NhanVien;
 
 import java.util.ArrayList;
 
-public class ActivityNhap extends AppCompatActivity implements View.OnClickListener {
+public class Activity2 extends AppCompatActivity implements View.OnClickListener {
     private TextView textCanBo;
     private EditText textTen, textDonViCongTac, textHeSoLuong, textPhuCap,textSo;
     private Button button,buttonChuyển;

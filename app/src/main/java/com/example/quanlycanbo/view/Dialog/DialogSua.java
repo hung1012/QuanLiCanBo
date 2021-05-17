@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.example.quanlycanbo.R;
 import com.example.quanlycanbo.model.GiaoVien;
 import com.example.quanlycanbo.model.NhanVien;
-import com.example.quanlycanbo.view.Activity.ActivityNhap;
+import com.example.quanlycanbo.view.Activity.Activity2;
 import com.example.quanlycanbo.view.Fragment.GiaoVienFragment;
 import com.example.quanlycanbo.view.Fragment.NhanVienFragment;
 
@@ -40,8 +40,8 @@ public class DialogSua extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.dialog, null);
 
         //NHẬN 2 arr
-        arrGiaoVien = getActivity().getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_GIAO_VIEN);
-        arrNhanVien = getActivity().getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_NHAN_VIEN);
+        arrGiaoVien = getActivity().getIntent().getParcelableArrayListExtra(Activity2.LIST_GIAO_VIEN);
+        arrNhanVien = getActivity().getIntent().getParcelableArrayListExtra(Activity2.LIST_NHAN_VIEN);
 
         //ÁNH XẠ
         Hoten = view.findViewById(R.id.textHoTen);

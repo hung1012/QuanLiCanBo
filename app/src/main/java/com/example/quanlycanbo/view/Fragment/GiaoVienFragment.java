@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.quanlycanbo.R;
 import com.example.quanlycanbo.model.GiaoVien;
 import com.example.quanlycanbo.view.Adapter.GiaoVienAdapter;
-import com.example.quanlycanbo.view.Activity.ActivityNhap;
+import com.example.quanlycanbo.view.Activity.Activity2;
 import com.example.quanlycanbo.view.Dialog.DialogThem;
 import com.example.quanlycanbo.view.Dialog.DialogSua;
 
@@ -51,7 +51,7 @@ public class GiaoVienFragment extends Fragment {
         switchchuyen = view.findViewById(R.id.switch1);
 
         //NHẬN arrGiaoViên TỪ CreateLayout
-        arrGiaoVien = getActivity().getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_GIAO_VIEN);
+        arrGiaoVien = getActivity().getIntent().getParcelableArrayListExtra(Activity2.LIST_GIAO_VIEN);
         //ĐỔ arrGiaoVien vào adapter
         GiaoVienAdapter adapter = new GiaoVienAdapter(getContext(), R.layout.dong_can_bo, arrGiaoVien);
         lvGiaoVien.setAdapter(adapter);

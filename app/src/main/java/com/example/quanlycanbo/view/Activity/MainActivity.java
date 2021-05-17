@@ -3,7 +3,6 @@ package com.example.quanlycanbo.view.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +12,7 @@ import com.example.quanlycanbo.R;
 import com.example.quanlycanbo.model.CanBo;
 import com.example.quanlycanbo.model.GiaoVien;
 import com.example.quanlycanbo.model.NhanVien;
-import com.example.quanlycanbo.view.Adapter.CanBoAdapter;
+import com.example.quanlycanbo.view.Adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -33,8 +32,8 @@ public class MainActivity extends AppCompatActivity{
 
         getSupportActionBar().hide();
 
-        arrGiaoVien = getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_GIAO_VIEN);
-        arrNhanVien = getIntent().getParcelableArrayListExtra(ActivityNhap.LIST_NHAN_VIEN);
+        arrGiaoVien = getIntent().getParcelableArrayListExtra(Activity2.LIST_GIAO_VIEN);
+        arrNhanVien = getIntent().getParcelableArrayListExtra(Activity2.LIST_NHAN_VIEN);
 
         //ÁNH XẠ
         tabLayout=findViewById(R.id.tabLayout);
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity{
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        viewPager.setAdapter(new CanBoAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
 
         tabLayout.setupWithViewPager(viewPager);
 
