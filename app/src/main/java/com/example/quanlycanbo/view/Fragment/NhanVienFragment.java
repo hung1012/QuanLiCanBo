@@ -32,7 +32,7 @@ public class NhanVienFragment extends Fragment {
 
     public static int vitri;
     public static boolean themNhanVien;
-    public static boolean laNhanVien;
+    public static boolean suaNhanVien;
 
     public NhanVienFragment() {
         // Required empty public constructor
@@ -84,8 +84,8 @@ public class NhanVienFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 vitri = position;
-                laNhanVien = true;
-                GiaoVienFragment.laGiaoVien = false;
+                suaNhanVien = true;
+                GiaoVienFragment.suaGiaoVien = false;
                 openDialogSuaCanBo();
                 adapter.notifyDataSetChanged();
             }

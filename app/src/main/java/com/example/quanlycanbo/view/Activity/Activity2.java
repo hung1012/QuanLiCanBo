@@ -22,20 +22,19 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
     private TextView textCanBo;
     private EditText textTen, textDonViCongTac, textHeSoLuong, textPhuCap,textSo;
     private Button button,buttonChuyển;
-    private RadioGroup radioCanBo;              //
-    private RadioButton radioGiaoVien;         //
-    private RadioButton radioNhanVien;          //
+    private RadioGroup radioCanBo;
+    private RadioButton radioGiaoVien, radioNhanVien;
 
     private String ten = "", donViCongTac = "";
     private double heSoLuong = -1, phuCap = -1;
     private int so = -1;
 
     private int soCanBo;
-    private int count=1;
+    private int count=1;//đếm số cán bộ
 
     public static final String LIST_GIAO_VIEN = "LISTGIAOVIEN";
     public static final String LIST_NHAN_VIEN = "LISTNHANVIEN";
-
+    //Tạo 2 ArrayList<>
     private ArrayList<GiaoVien> arrGiaoVien = new ArrayList<>();
     private ArrayList<NhanVien> arrNhanVien = new ArrayList<>();
 
@@ -46,8 +45,6 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nhap);
-
-        getSupportActionBar().hide();
 
         //ÁNH XẠ
         textPhuCap = findViewById(R.id.textPhuCap);
@@ -72,36 +69,37 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
         radioNhanVien.setOnCheckedChangeListener(listenerRadio);
         radioNhanVien.setOnClickListener(this);
         radioGiaoVien.setOnClickListener(this);
-        radioGiaoVien.setChecked(true);
+        radioGiaoVien.setChecked(true);//mặc định set radioGiaoVien checked
 
         button.setOnClickListener(this);
         buttonChuyển.setOnClickListener(this);
 
         buttonChuyển.setVisibility(View.GONE);
+
         //nhận số cán bộ từ Activity1
         soCanBo = getIntent().getIntExtra(Activity1.SO_CAN_BO,0);
     }
 
-    @Override
+    @Override//BẮT SỰ KIỆN onClick
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
             case R.id.radioButton_nhanVien:
-                textSo.setHint("Số Ngày Công");
+                textSo.setHint("Số Ngày Công");//chuyển hint textSo nếu đang là Số Tiết Dạy
                 break;
             case R.id.radioButton_giaoVien:
-                textSo.setHint("Số Tiết Dạy");
+                textSo.setHint("Số Tiết Dạy");//
                 break;
             case R.id.button:
-                count++;
-                if(radioGiaoVien.isChecked()) {
+                count++;//tăng số CanBo đã đếm lên 1
+                if(radioGiaoVien.isChecked()) {//Nếu GiaoVien đc chọn
                     try {
-                        getInf();
+                        getInf();//lấy thông tin
                         giaoVien = new GiaoVien(ten, donViCongTac, heSoLuong, phuCap, so);
-                        arrGiaoVien.add(giaoVien);
+                        arrGiaoVien.add(giaoVien);//thêm GiaoVien vào cuối arrGiaoVien
                     }catch(Exception e){
                         Toast.makeText(this, "Hãy Nhập Đầy Đủ Thông Tin Giáo Viên", Toast.LENGTH_SHORT).show();
-                        count--;
+                        count--;//nếu lỗi, giảm số cán bộ đã đếm đi 1
                         return;
                     }
                 }
@@ -116,19 +114,19 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
                         return;
                     }
                 }
-                if (count > soCanBo) {
+                if (count > soCanBo) {//nếu đếm đủ số cán bộ
                     textCanBo.setText("Đã Nhập Xong Các Cán Bộ");
-                    makeInvisible();
+                    makeInvisible();//ẩn các text, button k cần đến
                     break;
                 }
                 else {
                     textCanBo.setText("Cán Bộ " + count);
                     break;
                 }
-            case R.id.button1:
+            case R.id.button1://gọi đến và bắt đầu MainActivity
                 Intent intent = new Intent();
                 intent.setClass(this, MainActivity.class);
-                //TRUYỀN 2 arr SANG CanBoList
+                //TRUYỀN 2 arr SANG MainActivity
                 intent.putExtra(LIST_GIAO_VIEN, arrGiaoVien);
                 intent.putExtra(LIST_NHAN_VIEN, arrNhanVien);
                 startActivity(intent);
@@ -156,6 +154,7 @@ public class Activity2 extends AppCompatActivity implements View.OnClickListener
         textHeSoLuong.setVisibility(View.INVISIBLE);
         textPhuCap.setVisibility(View.INVISIBLE);
         textSo.setVisibility(View.INVISIBLE);
+        //hiện button chuyển màn
         buttonChuyển.setVisibility(View.VISIBLE);
     }
 }

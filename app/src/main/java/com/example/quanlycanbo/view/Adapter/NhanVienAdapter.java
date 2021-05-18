@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NhanVienAdapter extends BaseAdapter implements Filterable {
-    Context context;
-    int layout;
-    List<NhanVien> arrNhanVien = new ArrayList<>();
-    List<NhanVien> arrNhanVienOld = new ArrayList<>();
+    private Context context;
+    private int layout;
+    private List<NhanVien> arrNhanVien;
+    private List<NhanVien> arrNhanVienOld = new ArrayList<>();
 
     public NhanVienAdapter(Context context, int layout, List<NhanVien> arrNhanVien){
         this.context = context;
@@ -62,7 +62,7 @@ public class NhanVienAdapter extends BaseAdapter implements Filterable {
         textPhCap.setText("Phụ Cấp: " + arrNhanVien.get(position).getPhuCap());
         textSoTietDay.setText("Số Ngày Công: " +arrNhanVien.get(position).getSoNgayCong());
         textSTT.setText(Integer.toString(position+1));
-        textLuong.setText("Lương: " +Double.toString(arrNhanVien.get(position).tinhLuong())+"đ");
+        textLuong.setText("Lương: " +Integer.toString((int)arrNhanVien.get(position).tinhLuong())+"đ");
 
 
         return convertView;

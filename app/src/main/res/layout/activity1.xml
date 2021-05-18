@@ -8,20 +8,6 @@
     tools:context=".view.Activity.Activity1"
     android:background="@drawable/ic_main_background">
 
-<!--    <EditText-->
-<!--        android:id="@+id/edt_nhap"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:inputType="number"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_margin="40dp"-->
-<!--        android:hint="Nhập số cán bộ"-->
-<!--        android:textSize="30dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <Button
         android:id="@+id/btn_ok"
         android:layout_width="wrap_content"

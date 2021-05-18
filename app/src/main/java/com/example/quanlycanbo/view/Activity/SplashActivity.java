@@ -12,15 +12,13 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
-        getSupportActionBar().hide();
-
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                sleep(2000);
-                Intent intent = new Intent(SplashActivity.this, Activity1.class);
-                startActivity(intent);
-                finish();
+                sleep(1500);//chờ 1.5s
+                Intent intent = new Intent(SplashActivity.this, Activity1.class);//gọi activity1
+                startActivity(intent);//chuyển qua activity1
+                finish();//kết thúc Activity
             }
         });
         thread.start();

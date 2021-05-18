@@ -21,13 +21,9 @@ import com.example.quanlycanbo.view.Fragment.GiaoVienFragment;
 import java.util.ArrayList;
 
 public class DialogThem extends AppCompatDialogFragment {
-    private EditText Hoten;
-    private EditText Donvi;
-    private EditText Heso;
-    private EditText Phucap;
-    private EditText So;
+    private EditText Hoten, Donvi, Heso, Phucap, So;
     private ArrayList arrGiangVien, arrNhanVien;
-    boolean themGiangVien = GiaoVienFragment.themGiaoVien;
+    boolean themGiaoVien = GiaoVienFragment.themGiaoVien;
     @NonNull
     @Override
     public android.app.Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -46,23 +42,21 @@ public class DialogThem extends AppCompatDialogFragment {
         Phucap = view.findViewById(R.id.textPhCap);
         So = view.findViewById(R.id.textSo);
 
-        if(!themGiangVien){
+        if(!themGiaoVien){//nếu thêm Nhân Viên
             So.setHint("Số Ngày Công");
         }
 
-        //
         builder.setView(view)
                 .setTitle("THÊM")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
                 })
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if(themGiangVien) {
+                        if(themGiaoVien) {
                             try {
                                 arrGiangVien.add(new GiaoVien(Hoten.getText().toString(),
                                         Donvi.getText().toString(),
@@ -71,6 +65,7 @@ public class DialogThem extends AppCompatDialogFragment {
                                         Integer.parseInt(So.getText().toString())));
                                 Toast.makeText(getActivity(), "Đã Thêm Một Giáo Viên Vào Danh Sách", Toast.LENGTH_SHORT).show();
                             }catch (Exception e){
+                                //nếu có text rỗng
                                 Toast.makeText(getActivity(), "Hãy Nhập Đầy Đủ", Toast.LENGTH_SHORT).show();
                                 return;
                             }
@@ -84,6 +79,7 @@ public class DialogThem extends AppCompatDialogFragment {
                                         Integer.parseInt(So.getText().toString())));
                                 Toast.makeText(getActivity(), "Đã Thêm Một Nhân Viên Vào Danh Sách", Toast.LENGTH_SHORT).show();
                             }catch (Exception e){
+                                //nếu text rỗng
                                 Toast.makeText(getActivity(), "Hãy Nhập Đầy Đủ", Toast.LENGTH_SHORT).show();
                                 return;
                             }

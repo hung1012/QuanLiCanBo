@@ -32,7 +32,7 @@ public class GiaoVienFragment extends Fragment {
     private Switch switchchuyen;
 
     public static int vitri;
-    public static boolean laGiaoVien;
+    public static boolean suaGiaoVien;
     public static boolean themGiaoVien;
 
     public GiaoVienFragment() {
@@ -83,8 +83,8 @@ public class GiaoVienFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 vitri = position;
-                laGiaoVien = true;
-                NhanVienFragment.laNhanVien = false;
+                suaGiaoVien = true;
+                NhanVienFragment.suaNhanVien = false;
                 openDialogSuaCanBo();
             }
         });

@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GiaoVienAdapter extends BaseAdapter implements Filterable {
-    Context context;
-    int layout;
-    List<GiaoVien> arrGiaoVien = new ArrayList<>();
+    private Context context;
+    private int layout;
+    private List<GiaoVien> arrGiaoVien;
     //Tạo List khác phục vụ việc tìm kiếm
-    List<GiaoVien> arrGiaoVienOld = new ArrayList<>();
+    private List<GiaoVien> arrGiaoVienOld = new ArrayList<>();
     public GiaoVienAdapter(Context context, int layout, List<GiaoVien> arrGiaoVien){
         this.context = context;
         this.layout = layout;
@@ -62,7 +62,7 @@ public class GiaoVienAdapter extends BaseAdapter implements Filterable {
         textPhCap.setText("Phụ Cấp: "+ arrGiaoVien.get(position).getPhuCap());
         textSoTietDay.setText("Số Tiết Dạy: "+ arrGiaoVien.get(position).getSoTietDay());
         textSTT.setText(Integer.toString(position+1));
-        textLuong.setText("Lương: " +Double.toString(arrGiaoVien.get(position).tinhLuong())+"đ");
+        textLuong.setText("Lương: " +Integer.toString((int)arrGiaoVien.get(position).tinhLuong())+"đ");
 
         return convertView;
     }

@@ -22,15 +22,11 @@ import com.example.quanlycanbo.view.Fragment.NhanVienFragment;
 import java.util.ArrayList;
 
 public class DialogSua extends AppCompatDialogFragment {
-    private EditText Hoten;
-    private EditText Donvi;
-    private EditText Heso;
-    private EditText Phucap;
-    private EditText So;
+    private EditText Hoten, Donvi, Heso, Phucap, So;
     private ArrayList<GiaoVien> arrGiaoVien;
     private ArrayList<NhanVien> arrNhanVien;
     int vitriNhan;
-    boolean laGiangVien = GiaoVienFragment.laGiaoVien;
+    boolean suaGiangVien = GiaoVienFragment.suaGiaoVien;
 
     @NonNull
     @Override
@@ -51,7 +47,7 @@ public class DialogSua extends AppCompatDialogFragment {
         So = view.findViewById(R.id.textSo);
 
         //ĐỂ TEXT VÀO EDITTEXT
-        if(laGiangVien) {
+        if(suaGiangVien) {
             vitriNhan = GiaoVienFragment.vitri;
             Hoten.setText(arrGiaoVien.get(vitriNhan).getHoTen());
             Donvi.setText(arrGiaoVien.get(vitriNhan).getDonViCongTac());
@@ -59,7 +55,7 @@ public class DialogSua extends AppCompatDialogFragment {
             Phucap.setText(Double.toString(arrGiaoVien.get(vitriNhan).getPhuCap()));
             So.setText(Integer.toString(arrGiaoVien.get(vitriNhan).getSoTietDay()));
         }
-        else{
+        else{//nếu sửa Nhân Viên
             vitriNhan = NhanVienFragment.vitri;
             Hoten.setText(arrNhanVien.get(vitriNhan).getHoTen());
             Donvi.setText(arrNhanVien.get(vitriNhan).getDonViCongTac());
@@ -79,7 +75,7 @@ public class DialogSua extends AppCompatDialogFragment {
                  .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                      @Override
                      public void onClick(DialogInterface dialog, int which) {
-                         if(laGiangVien) {
+                         if(suaGiangVien) {
                              vitriNhan = GiaoVienFragment.vitri;
                              arrGiaoVien.set(vitriNhan, new GiaoVien(Hoten.getText().toString(),
                                                                        Donvi.getText().toString(),

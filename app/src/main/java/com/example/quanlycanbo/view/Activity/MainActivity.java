@@ -21,17 +21,19 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity{
     TabLayout tabLayout;
     ViewPager viewPager;
+
     TextInputEditText textInput;
     TextView textView;
+
     private ArrayList<GiaoVien> arrGiaoVien;
     private  ArrayList<NhanVien> arrNhanVien;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().hide();
-
+        //Nhận 2 ArrayList từ Activity2
         arrGiaoVien = getIntent().getParcelableArrayListExtra(Activity2.LIST_GIAO_VIEN);
         arrNhanVien = getIntent().getParcelableArrayListExtra(Activity2.LIST_NHAN_VIEN);
 
@@ -42,20 +44,18 @@ public class MainActivity extends AppCompatActivity{
         textView= findViewById(R.id.textView);
 
         tabLayout.addTab(tabLayout.newTab().setText("Giáo Viên"));
-        tabLayout.addTab(tabLayout.newTab().setText("Nhân Viên"));
-
+        tabLayout.addTab(tabLayout.newTab().setText("Nhân Viên"));//2 tab
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        tabLayout.setupWithViewPager(viewPager);//lk tabLayout và viewPager
 
-        tabLayout.setupWithViewPager(viewPager);
-
+        //TÍNH TỔNG LƯƠNG PHẢI TRẢ
+        //BẮT SỰ KIỆN THAY ĐỔI textInput
         textInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
@@ -70,32 +70,16 @@ public class MainActivity extends AppCompatActivity{
                     for (CanBo canBo : arrCanBo){
                         tongLuong += canBo.tinhLuong();
                     }
-                    int heSo = Integer.parseInt(textInput.getText().toString());
+                    int heSo = Integer.parseInt(textInput.getText().toString());//ng dùng nhập
                     tongLuong = tongLuong * heSo;
                     textView.setText("Tổng Lương Phải Trả Trong " + textInput.getText().toString() + " Tháng Là: " + (int)tongLuong + "đ");
                 }catch (Exception e){
-                    textView.setText("Tổng Lương Phải Trả Trong 0 Tháng Là: 0đ");
+                    textView.setText("Tổng Lương Phải Trả Trong 0 Tháng Là: 0đ");//nếu text rỗng
                 }
             }
-
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
     }
-    // TÍNH TỔNG LƯƠNG PHẢI TRẢ
-//    @Override
-//    public void onClick(View v) {
-//        double tongLuong = 0;
-//        for (GiaoVien giaoVien : arrGiaoVien) {
-//            tongLuong += giaoVien.tinhLuong();
-//        }
-//        for (NhanVien nhanVien : arrNhanVien) {
-//            tongLuong += nhanVien.tinhLuong();
-//        }
-//        int heSo = Integer.parseInt(textInput.getText().toString());
-//        tongLuong = tongLuong * heSo;
-//        textView.setText("Tổng Lương Phải Trả Trong " +textInput.getText().toString()+" Tháng Là: " + Double.toString(tongLuong) + "đ");
-//    }
 }
